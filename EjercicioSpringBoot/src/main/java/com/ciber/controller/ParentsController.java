@@ -1,5 +1,10 @@
 package com.ciber.controller;
 
+import com.ciber.model.Parents;
+import com.ciber.service.IParentsService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,46 +17,62 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ciber.model.Parents;
-import com.ciber.service.IParentsService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
 @Api(value = "API REST parientes", description = "Mostar información")
 @RestController
 public class ParentsController {
-  
-  @Autowired 
+
+  @Autowired
   IParentsService service;
+  /**
+   * Method listParents() that returns the list of parents.
+   * 
+   * @return list of parents.
+   */
   
   @ApiOperation(value = "Retorna lista de Parents")
   @GetMapping(value = "/parents")
   public ResponseEntity<List<Parents>> listParents() {
     return new ResponseEntity<List<Parents>>(service.findAll(), HttpStatus.OK);
   }
+  /**
+   * Method createParents() that creates an object parents.
+   * 
+   * @param parem object parents.
+   * @return
+   */
   
   @ApiOperation(value = "Crea a una Parents")
   @PostMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> createParents(@RequestBody Parents parem) {
-    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.OK);    
+    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.OK);
   }
-  
+
+  /**
+   * Method updateParents() that update an object parents.
+   * 
+   * @param parem object parents.
+   * @return
+   */
   @ApiOperation(value = "Actualiza a una Parents")
   @PutMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> updateParents(@RequestBody Parents parem) {
     return new ResponseEntity<Parents>(service.update(parem), HttpStatus.OK);
   }
-  
-  @ApiOperation(value = "Actualiza datos de una Parents")
+
+  /**
+   * DeleteMapping method deleteParents() that removes an object familparents.
+   * 
+   * @param parem Update.
+   * @return
+   */
+  @ApiOperation(value = "Elimina datos de una Parents")
   @DeleteMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Integer> deleteParents(@RequestBody Parents parem) {
     int rpta = 0;
 
-    rpta = service.delete(parem.getParent_id());
+    rpta = service.delete(parem.getParentId());
 
     return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
   }
-  
-  
+
 }

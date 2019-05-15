@@ -18,30 +18,38 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 
+/**
+ * The class Students is a model that defines a set of variables -the state, and
+ * appropriate methods to operate with said data -the behavior.
+ * @version 15/05/2019 V.1
+ * @author vperezqu.
+ *
+ */
 @Data
 @Entity
 public class Students {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int student_id;
+  @Column(name = "student_id")
+  private int studentId;
 
   @Column(name = "first_name", length = 20, nullable = false)
-  private String first_name;
+  private String firstName;
 
   @Column(name = "middle_name", length = 20, nullable = false)
-  private String middle_name;
+  private String middleName;
 
   @Column(name = "last_name", length = 20, nullable = false)
-  private String last_name;
+  private String lastName;
 
   @Temporal(TemporalType.DATE)
   @Column(name = "date_of_birth")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "America/Bogota")
-  private Date date_of_birth;
+  private Date dateOfBirth;
 
   @Column(name = "other_students_details", length = 100, nullable = false)
-  private String other_students_details;
+  private String otherStudentsDetails;
 
   @JsonIgnore
   @OneToMany(mappedBy = "students")

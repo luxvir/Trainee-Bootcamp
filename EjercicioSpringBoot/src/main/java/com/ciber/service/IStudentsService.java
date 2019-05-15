@@ -1,11 +1,10 @@
 package com.ciber.service;
 
+import com.ciber.model.Students;
 import java.util.List;
 
-import com.ciber.model.Students;
-
-public interface IStudents {
-
+public interface IStudentsService {
+  
   List<Students> findAll();
 
   Students create(Students stu);

@@ -1,19 +1,19 @@
 package com.ciber.service;
 
+import com.ciber.dao.IParentsDao;
+import com.ciber.model.Parents;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ciber.dao.IParentsDao;
-import com.ciber.model.Parents;
-
 @Service
-public class ParentsServiceImpl  implements IParentsService {
+public class ParentsServiceImpl implements IParentsService {
 
   @Autowired
   private IParentsDao dao;
-  
+
   @Override
   public List<Parents> findAll() {
     return dao.findAll();

@@ -1,10 +1,9 @@
 package com.ciber.service;
 
+import com.ciber.model.FamilyMembers;
 import java.util.List;
 
-import com.ciber.model.FamilyMembers;
-
-public interface IFamilyMembers {
+public interface IFamilyMembersService {
 
   List<FamilyMembers> findAll();
 
@@ -13,4 +12,5 @@ public interface IFamilyMembers {
   FamilyMembers update(FamilyMembers famiMem);
 
   int delete(Integer id);
+
 }

@@ -1,21 +1,21 @@
 package com.ciber.service;
 
+import com.ciber.dao.IFamilyMembersDao;
+import com.ciber.model.FamilyMembers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ciber.dao.IFamilyMembersDao;
-import com.ciber.model.FamilyMembers;
-
 @Service
-public class FamilyMembersImpl  implements IFamilyMembers{
+public class FamilyMembersImpl implements IFamilyMembersService {
 
   @Autowired
   IFamilyMembersDao dao;
+
   @Override
   public List<FamilyMembers> findAll() {
-    return dao.findAll();
+    return (List<FamilyMembers>) dao.findAll();
   }
 
   @Override

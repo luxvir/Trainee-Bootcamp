@@ -1,8 +1,8 @@
 package com.ciber.service;
 
-import java.util.List;
-
 import com.ciber.model.Parents;
+
+import java.util.List;
 
 public interface IParentsService {
   List<Parents> findAll();
