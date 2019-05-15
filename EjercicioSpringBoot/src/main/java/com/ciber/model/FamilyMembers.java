@@ -8,7 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
 
+@Data
 @Entity
 public class FamilyMembers {
 
@@ -29,47 +31,6 @@ public class FamilyMembers {
   
   @ManyToOne
   @JoinColumn(name = "student_id", nullable = false)
-  private Students students;
-
-  public int getFamily_member_id() {
-    return family_member_id;
-  }
-
-  public void setFamily_member_id(int family_member_id) {
-    this.family_member_id = family_member_id;
-  }
-
-  public String getParent_or_student_member() {
-    return parent_or_student_member;
-  }
-
-  public void setParent_or_student_member(String parent_or_student_member) {
-    this.parent_or_student_member = parent_or_student_member;
-  }
-
-  public Families getFamilies() {
-    return families;
-  }
-
-  public void setFamilies(Families families) {
-    this.families = families;
-  }
-
-  public Parents getParents() {
-    return parents;
-  }
-
-  public void setParents(Parents parents) {
-    this.parents = parents;
-  }
-
-  public Students getStudents() {
-    return students;
-  }
-
-  public void setStudents(Students students) {
-    this.students = students;
-  }
-  
+  private Students students; 
   
 }

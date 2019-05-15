@@ -34,8 +34,9 @@ public class ParentsController {
   @ApiOperation(value = "Crea a una Parents")
   @PostMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> createParents(@RequestBody Parents parem) {
-    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.OK);
+    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.OK);    
   }
+  
   @ApiOperation(value = "Actualiza a una Parents")
   @PutMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> updateParents(@RequestBody Parents parem) {

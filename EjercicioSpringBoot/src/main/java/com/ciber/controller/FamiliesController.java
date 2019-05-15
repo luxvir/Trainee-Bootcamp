@@ -1,5 +1,6 @@
 package com.ciber.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ciber.model.Families;
+import com.ciber.model.Parents;
 import com.ciber.service.IFamiliesService;
 
 import io.swagger.annotations.Api;
@@ -35,7 +37,9 @@ public class FamiliesController {
   @ApiOperation(value = "Crea a una families")
   @PostMapping(value = "/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Families> createfamilies(@RequestBody Families fami) {
-    return new ResponseEntity<Families>(service.create(fami), HttpStatus.OK);
+	  
+	  
+	    return new ResponseEntity<Families>(service.create(fami), HttpStatus.OK);
   }
   @ApiOperation(value = "Actualiza a una families")
   @PutMapping(value = "/families", consumes = "application/json", produces = "application/json")
