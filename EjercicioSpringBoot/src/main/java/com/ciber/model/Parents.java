@@ -64,4 +64,5 @@ public class Parents {
   @OneToMany(mappedBy = "parents")
   private List<FamilyMembers> familyMembers;
 
+  
 }
