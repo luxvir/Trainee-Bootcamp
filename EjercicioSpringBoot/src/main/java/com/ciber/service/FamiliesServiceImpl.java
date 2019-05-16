@@ -6,8 +6,10 @@ import com.ciber.dao.IParentsDao;
 import com.ciber.model.Families;
 import com.ciber.model.FamilyMembers;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FamiliesServiceImpl implements IFamiliesService {
 
+  Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private IFamiliesDao dao;
 
@@ -26,30 +29,38 @@ public class FamiliesServiceImpl implements IFamiliesService {
 
   @Override
   public List<Families> findAll() {
-    return dao.findAll();
+    List<Families> lista = new ArrayList<>();
+    try {
+      lista = dao.findAll();
+      log.info("Lista familias.");
+    } catch (Exception e) {
+      log.info("error " + e);
+    }
+    return lista;
   }
-
 
   Families famili = new Families();
 
   @Override
   public Families create(Families fami) {
-    System.out.println("entro");
+    log.info("entro");
     try {
 
       daoParen.findById(fami.getParents().getParentId()).ifPresent((p) -> {
-        System.out.println("codigo encontrado" + fami.getParents().getParentId());
-     
+
+        log.info("codigo encontrado" + fami.getParents().getParentId());
+
         fami.setFamilyId(fami.getFamilyId());
-        System.out.println("lo encontro");
+        log.info("pasa al registro");
 
         famili = dao.save(fami);
+        log.info("registrado");
       });
 
     } catch (Exception e) {
-      System.out.println(e);
+      log.info("error" + e);
     }
-    System.out.println("registrado");
+    log.info("termino proceso");
     return famili;
   }
 
@@ -64,8 +75,10 @@ public class FamiliesServiceImpl implements IFamiliesService {
     try {
       dao.deleteById(id);
       rpta = 1;
+      log.info("Eleminado familia");
     } catch (Exception e) {
       rpta = 0;
+      log.info("error" + e);
     }
     return rpta;
   }

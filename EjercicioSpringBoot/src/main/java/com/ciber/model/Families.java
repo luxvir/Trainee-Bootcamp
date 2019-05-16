@@ -12,12 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
 /**
- * La clase Families es un modelo que define un conjunto de variables el estado, y métodos
- * apropiados para operar con dichos datos.
+ * La clase Families es un modelo que define un conjunto de variables el estado,
+ * y métodos apropiados para operar con dichos datos.
  * 
  * @version 15/05/2019 V.1
  * @author vperezqu.
@@ -32,6 +33,7 @@ public class Families {
   @Column(name = "family_id")
   private int familyId;
 
+  @NotNull
   @Column(name = "family_name", length = 50, nullable = false)
   private String familyName;
 

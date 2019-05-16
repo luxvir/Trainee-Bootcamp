@@ -7,6 +7,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -21,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "API REST families", description = "Mostar información")
 @RestController
 public class FamiliesController {
-
+  Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private IFamiliesService service;
 
   /**
-   * El metodo GetMapping  listFamiliesthat() retorna la lista de familiass.
+   * El metodo GetMapping listFamiliesthat() retorna la lista de familiass.
    * 
    * @return list of families.
    */
@@ -37,7 +40,8 @@ public class FamiliesController {
   }
 
   /**
-   * El metodo PostMapping createfamilies() se encarga de registrar a un objeto familia.
+   * El metodo PostMapping createfamilies() se encarga de registrar a un objeto
+   * familia.
    * 
    * @param fami object families.
    * @return object families.
@@ -50,7 +54,8 @@ public class FamiliesController {
   }
 
   /**
-   * El metodo PutMapping updatefamilies() se encarga de actualizar a un objeto familia.
+   * El metodo PutMapping updatefamilies() se encarga de actualizar a un objeto
+   * familia.
    * 
    * @param fami object families.
    * @return object families.
@@ -62,8 +67,8 @@ public class FamiliesController {
   }
 
   /**
-   * El metodo DeleteMapping deletefamilies() se encarga de remover 
-   * a un objeto famila por su código.
+   * El metodo DeleteMapping deletefamilies() se encarga de remover a un objeto
+   * famila por su código.
    * 
    * @param fami Update.
    * @return object families delete.
@@ -72,9 +77,13 @@ public class FamiliesController {
   @DeleteMapping(value = "/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Integer> deletefamilies(@RequestBody Families fami) {
     int rpta = 0;
-
-    rpta = service.delete(fami.getFamilyId());
-
+    try {
+      rpta = service.delete(fami.getFamilyId());
+    } catch (Exception e) {
+      log.info("error" + e);
+      return new ResponseEntity<Integer>(rpta, HttpStatus.BAD_REQUEST);
+    }
+    log.info("Termino proceso");
     return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
   }
 

@@ -3,14 +3,18 @@ package com.ciber.service;
 import com.ciber.dao.IStudentsDao;
 import com.ciber.model.Students;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentsServiceImpl implements IStudentsService {
-
+  Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private IStudentsDao dao;
 
@@ -21,7 +25,14 @@ public class StudentsServiceImpl implements IStudentsService {
    */
   @Override
   public List<Students> findAll() {
-    return dao.findAll();
+    List<Students> lista = new ArrayList<>();
+    try {
+      lista = dao.findAll();
+      log.info("Lista de estudiantes.");
+    } catch (Exception e) {
+      log.info("error " + e);
+    }
+    return lista;
   }
 
   /**
@@ -31,7 +42,14 @@ public class StudentsServiceImpl implements IStudentsService {
    */
   @Override
   public Students create(Students stu) {
-    return dao.save(stu);
+    Students st = new Students();
+    try {
+      st = dao.save(stu);
+      log.info("Actualizo estudiante");
+    } catch (Exception e) {
+      log.info("Error: " + e);
+    }
+    return st;
   }
 
   /**
@@ -41,7 +59,14 @@ public class StudentsServiceImpl implements IStudentsService {
    */
   @Override
   public Students update(Students stu) {
-    return dao.save(stu);
+    Students st = new Students();
+    try {
+      st = dao.save(stu);
+      log.info("Actualizo estudiante ");
+    } catch (Exception e) {
+      log.info("Error: " + e);
+    }
+    return st;
   }
 
   /**
@@ -55,8 +80,10 @@ public class StudentsServiceImpl implements IStudentsService {
     try {
       dao.deleteById(id);
       rpta = 1;
+      log.info("Elemino estudiante");
     } catch (Exception e) {
       rpta = 0;
+      log.info("Error: " + e);
     }
     return rpta;
   }
