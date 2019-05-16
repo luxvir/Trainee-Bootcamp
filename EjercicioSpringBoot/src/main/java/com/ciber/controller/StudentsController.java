@@ -23,9 +23,9 @@ public class StudentsController {
   @Autowired
   IStudentsService service;
   /**
-   * Method listStudents() returns the list of students.
+   * El metodo listStudents() encargado de retorna la lista de studiantes.
    * 
-   * @return list of students.
+   * @return lista de studentes.
    */
   
   @ApiOperation(value = "Retorna lista de estudiante")
@@ -34,22 +34,22 @@ public class StudentsController {
     return new ResponseEntity<List<Students>>(service.findAll(), HttpStatus.OK);
   }
   /**
-   * Method createStudents() that creates an object students.
+   * El metodo createStudents() encargado de crear a un objeto estudiante.
    * 
    * @param stu object students.
-   * @return stu.
+   * @return objeto studiante creado.
    */
   
   @ApiOperation(value = "Crea a una estudiante")
   @PostMapping(value = "/students", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Students> createStudents(@RequestBody Students stu) {
-    return new ResponseEntity<Students>(service.create(stu), HttpStatus.OK);
+    return new ResponseEntity<Students>(service.create(stu), HttpStatus.CREATED);
   }
   /**
-   * Method updateStudents() that update an object students.
+   * El metodo updateStudents() encargado de realizar la actualizacion a un objeto estudiante.
    * 
    * @param stu object students.
-   * @return stu.
+   * @return estudiante modificado.
    */
   
   @ApiOperation(value = "Actualiza  a un estudiante")
@@ -59,10 +59,10 @@ public class StudentsController {
   }
 
   /**
-   * Method deleteStudents() that removes an object students.
+   * El metodo deleteStudents() responsable de eliminar  a un objeto estudiante.
    * 
-   * @param stu Update.
-   * @return stu.
+   * @param stu object studiants.
+   * @return objeto estudiant eliminado.
    */
   
   @ApiOperation(value = "Elimina  a estudiante")

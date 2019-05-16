@@ -23,35 +23,37 @@ public class ParentsController {
 
   @Autowired
   IParentsService service;
+
   /**
-   * Method listParents() that returns the list of parents.
+   * EL metodo listParents() se encarga de retonar la lista de parientes.
    * 
    * @return list of parents.
    */
-  
+
   @ApiOperation(value = "Retorna lista de Parents")
   @GetMapping(value = "/parents")
   public ResponseEntity<List<Parents>> listParents() {
     return new ResponseEntity<List<Parents>>(service.findAll(), HttpStatus.OK);
   }
+
   /**
-   * Method createParents() that creates an object parents.
+   * El metodo createParents() es responsable de crear a un pariente..
    * 
    * @param parem object parents.
-   * @return
+   * @return object parents.
    */
-  
+
   @ApiOperation(value = "Crea a una Parents")
   @PostMapping(value = "/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> createParents(@RequestBody Parents parem) {
-    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.OK);
+    return new ResponseEntity<Parents>(service.create(parem), HttpStatus.CREATED);
   }
 
   /**
-   * Method updateParents() that update an object parents.
+   * El metodo updateParents() se encarga de actualizar a un pariente.
    * 
    * @param parem object parents.
-   * @return
+   * @return object parents.
    */
   @ApiOperation(value = "Actualiza a una Parents")
   @PutMapping(value = "/parents", consumes = "application/json", produces = "application/json")
@@ -62,8 +64,8 @@ public class ParentsController {
   /**
    * DeleteMapping method deleteParents() that removes an object familparents.
    * 
-   * @param parem Update.
-   * @return
+   * @param parem object parents.
+   * @return object parents.
    */
   @ApiOperation(value = "Elimina datos de una Parents")
   @DeleteMapping(value = "/parents", consumes = "application/json", produces = "application/json")

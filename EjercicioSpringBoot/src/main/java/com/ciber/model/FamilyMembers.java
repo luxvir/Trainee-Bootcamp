@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import lombok.Data;
 
 /**
- * The class FamilyMembers is a model that defines a set of variables -the
- * state, and appropriate methods to operate with said data -the behavior.
+ * La clase FamilyMembers es un modelo que define un conjunto de variables el estado, y métodos
+ * apropiados para operar con dichos datos.
  * @version 15/05/2019 V.1
  * @author vperezqu.
  *
@@ -26,7 +26,7 @@ public class FamilyMembers {
   @Column(name = "family_member_id")
   private int familyMemberId;
 
-  @Column(name = "parent_or_student_member", length = 100, nullable = true)
+  @Column(name = "parent_or_student_member", length = 100, nullable = false)
   private String parentOrStudentMember;
 
   @ManyToOne
@@ -34,11 +34,11 @@ public class FamilyMembers {
   private Families families;
 
   @ManyToOne
-  @JoinColumn(name = "parent_id", nullable = false)
+  @JoinColumn(name = "parent_id", nullable = true)
   private Parents parents;
 
   @ManyToOne
-  @JoinColumn(name = "student_id", nullable = false)
+  @JoinColumn(name = "student_id", nullable = true)
   private Students students;
 
 }

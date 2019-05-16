@@ -29,7 +29,8 @@ public class FamilyMembersController {
   IFamiliesService serviceFam;
 
   /**
-   * GetMapping method listfamilyMembers() returns the list of family members.
+   * El metodo GetMapping  listfamilyMembers() se encarga de retornar 
+   * la lista de miembros de familia.
    * 
    * @return list of family members.
    */
@@ -40,8 +41,8 @@ public class FamilyMembersController {
   }
 
   /**
-   * PostMapping method createfamilies() is responsible for creating an object
-   * families members.
+   * El metodo PostMapping  createfamilies() es responsable de crear 
+   * a un objeto de miembro de familia.
    * 
    * @param famiMen object families.
    * @return famiMen.
@@ -50,11 +51,12 @@ public class FamilyMembersController {
   @PostMapping(value = "/familyMembers", consumes = "application/json", 
           produces = "application/json")
   public ResponseEntity<FamilyMembers> createfamilyMembers(@RequestBody FamilyMembers famiMen) {
-    return new ResponseEntity<FamilyMembers>(service.create(famiMen), HttpStatus.OK);
+    return new ResponseEntity<FamilyMembers>(service.create(famiMen), HttpStatus.CREATED);
   }
 
   /**
-   * PutMapping method updatefamilies() returns to an updated object families
+   * El metodo PutMapping  updatefamilies() se encarga de actualizar 
+   * a un objeto de miembro de familia.
    * members.
    * 
    * @param famiMen object families.
@@ -67,8 +69,8 @@ public class FamilyMembersController {
   }
 
   /**
-   * DeleteMapping method deletefamilyMembers() that removes an object family
-   * members.
+   * El metodo DeleteMapping  deletefamilyMembers() se encarga de eliminar 
+   * a un objeto de miembro de familia.
    * 
    * @param famiMen .
    * @return
@@ -85,8 +87,8 @@ public class FamilyMembersController {
   }
 
   /**
-   * Method findByFamilyMembers() that has as parameter to FamilyId and 
-   * that returns the members of that family with their data.
+   * El metodo findByFamilyMembers() se le envia un parametro FamilyId 
+   * y retorna a los miembros de familia.
    * 
    * @return list of family members.
    */

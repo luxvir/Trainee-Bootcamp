@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 import lombok.Data;
 
 /**
- * The class Students is a model that defines a set of variables -the state, and
- * appropriate methods to operate with said data -the behavior.
+ * La clase Students es un modelo que define un conjunto de variables el estado, y métodos
+ * apropiados para operar con dichos datos.
  * @version 15/05/2019 V.1
  * @author vperezqu.
  *

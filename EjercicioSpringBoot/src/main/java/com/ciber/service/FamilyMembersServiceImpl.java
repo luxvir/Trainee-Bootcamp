@@ -30,7 +30,7 @@ public class FamilyMembersServiceImpl implements IFamilyMembersService {
     return (List<FamilyMembers>) dao.findAll();
   }
 
-  // almacena
+
   FamilyMembers faMembers;
 
   @Override
@@ -46,7 +46,7 @@ public class FamilyMembersServiceImpl implements IFamilyMembersService {
             System.out.println("codigo encontrado de fami " + famiMem.getFamilies().getFamilyId());
             famiMem.setFamilies(q);
           });
-          // lo gurada
+  
           faMembers = dao.save(famiMem);
         });
 
@@ -59,7 +59,7 @@ public class FamilyMembersServiceImpl implements IFamilyMembersService {
             System.out.println("codigo encontrado de fam " + famiMem.getFamilies().getFamilyId());
             famiMem.setFamilies(q);
           });
-          // lo guarda
+         
           faMembers = dao.save(famiMem);
         });
 

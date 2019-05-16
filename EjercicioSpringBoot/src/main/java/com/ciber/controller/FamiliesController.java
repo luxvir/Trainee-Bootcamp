@@ -26,7 +26,7 @@ public class FamiliesController {
   private IFamiliesService service;
 
   /**
-   * GetMapping method listFamiliesthat() returns the list of families.
+   * El metodo GetMapping  listFamiliesthat() retorna la lista de familiass.
    * 
    * @return list of families.
    */
@@ -37,23 +37,23 @@ public class FamiliesController {
   }
 
   /**
-   * PostMapping method createfamilies() that creates an object families.
+   * El metodo PostMapping createfamilies() se encarga de registrar a un objeto familia.
    * 
    * @param fami object families.
-   * @return
+   * @return object families.
    */
   @ApiOperation(value = "Crea a una families")
   @PostMapping(value = "/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Families> createfamilies(@RequestBody Families fami) {
 
-    return new ResponseEntity<Families>(service.create(fami), HttpStatus.OK);
+    return new ResponseEntity<Families>(service.create(fami), HttpStatus.CREATED);
   }
 
   /**
-   * PutMapping method updatefamilies() that update an object families.
+   * El metodo PutMapping updatefamilies() se encarga de actualizar a un objeto familia.
    * 
    * @param fami object families.
-   * @return
+   * @return object families.
    */
   @ApiOperation(value = "Actualiza a una families")
   @PutMapping(value = "/families", consumes = "application/json", produces = "application/json")
@@ -62,10 +62,11 @@ public class FamiliesController {
   }
 
   /**
-   * DeleteMapping method deletefamilies() that removes an object families by its code.
+   * El metodo DeleteMapping deletefamilies() se encarga de remover 
+   * a un objeto famila por su código.
    * 
    * @param fami Update.
-   * @return
+   * @return object families delete.
    */
   @ApiOperation(value = "Actualiza datos de una families")
   @DeleteMapping(value = "/families", consumes = "application/json", produces = "application/json")

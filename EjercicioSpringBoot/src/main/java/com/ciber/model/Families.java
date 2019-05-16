@@ -16,8 +16,8 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 
 /**
- * The class Families is a model that defines a set of variables -the state, and
- * appropriate methods to operate with said data -the behavior.
+ * La clase Families es un modelo que define un conjunto de variables el estado, y métodos
+ * apropiados para operar con dichos datos.
  * 
  * @version 15/05/2019 V.1
  * @author vperezqu.
@@ -27,20 +27,20 @@ import lombok.Data;
 @Entity
 public class Families {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "family_id")
-	private int familyId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "family_id")
+  private int familyId;
 
-	@Column(name = "family_name", length = 50, nullable = false)
-	private String familyName;
+  @Column(name = "family_name", length = 50, nullable = false)
+  private String familyName;
 
-	@ManyToOne
-	@JoinColumn(name = "head_of_family_parent_id", nullable = false)
-	private Parents parents;
+  @ManyToOne
+  @JoinColumn(name = "head_of_family_parent_id", nullable = false)
+  private Parents parents;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "families")
-	private List<FamilyMembers> familyMembers;
+  @JsonIgnore
+  @OneToMany(mappedBy = "families")
+  private List<FamilyMembers> familyMembers;
 
 }

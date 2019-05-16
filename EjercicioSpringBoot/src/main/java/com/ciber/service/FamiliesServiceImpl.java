@@ -29,7 +29,7 @@ public class FamiliesServiceImpl implements IFamiliesService {
     return dao.findAll();
   }
 
-  // lo declaro para almacenarlo y retornalo
+
   Families famili = new Families();
 
   @Override
@@ -37,14 +37,12 @@ public class FamiliesServiceImpl implements IFamiliesService {
     System.out.println("entro");
     try {
 
-      // lo busca
       daoParen.findById(fami.getParents().getParentId()).ifPresent((p) -> {
         System.out.println("codigo encontrado" + fami.getParents().getParentId());
-        // lo guarda
+     
         fami.setFamilyId(fami.getFamilyId());
         System.out.println("lo encontro");
 
-        // lo registra
         famili = dao.save(fami);
       });
 
