@@ -111,3 +111,8 @@
 2019-05-16 16:49:39,272 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
 2019-05-16 16:49:39,273 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
 2019-05-16 16:49:46,253 INFO org.springframework.boot.StartupInfoLogger [main] Started EjercicioSpringBootApplication in 7.565 seconds (JVM running for 8.657)
+2019-05-16 19:03:54,881 INFO org.springframework.boot.StartupInfoLogger [main] Starting EjercicioSpringBootApplication on LIM-5CD5447V1Z with PID 15424 (C:\Users\vperezqu\Documents\Bootcamp\Trainee-Bootcamp\EjercicioSpringBoot\target\classes started by vperezqu in C:\Users\vperezqu\Documents\Bootcamp\Trainee-Bootcamp\EjercicioSpringBoot)
+2019-05-16 19:03:54,923 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-05-16 19:03:54,924 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-05-16 19:04:16,105 INFO org.springframework.boot.StartupInfoLogger [main] Started EjercicioSpringBootApplication in 23.606 seconds (JVM running for 29.563)
+2019-05-16 19:05:37,508 INFO com.ciber.service.ParentsServiceImpl [https-jsse-nio-9090-exec-10] Lista parientes.
