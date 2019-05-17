@@ -4,6 +4,7 @@ import com.ciber.model.FamilyMembers;
 import com.ciber.service.IFamiliesService;
 import com.ciber.service.IFamilyMembersService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(value = "/api/v1/swagger", tags =  "Mostar información")
 @RestController
 public class FamilyMembersController {
 
@@ -35,7 +37,7 @@ public class FamilyMembersController {
    * @return list of family members.
    */
   @ApiOperation(value = "Retorna lista de family Members")
-  @GetMapping(value = "/familyMembers")
+  @GetMapping(value = "/api/v1/familyMembers")
   public ResponseEntity<List<FamilyMembers>> listfamilyMembers() {
     return new ResponseEntity<List<FamilyMembers>>(service.findAll(), HttpStatus.OK);
   }
@@ -48,8 +50,8 @@ public class FamilyMembersController {
    * @return famiMen.
    */
   @ApiOperation(value = "Crea a una family Members")
-  @PostMapping(value = "/familyMembers", consumes = "application/json", 
-        produces = "application/json")
+  @PostMapping(value = "/api/v1/familyMembers", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<FamilyMembers> createfamilyMembers(@RequestBody FamilyMembers famiMen) {
     return new ResponseEntity<FamilyMembers>(service.create(famiMen), HttpStatus.CREATED);
   }
@@ -61,7 +63,8 @@ public class FamilyMembersController {
    * @param famiMen object families.
    * @return famiMen.
    */
-  @PutMapping(value = "/familyMembers", consumes = "application/json", 
+  @ApiOperation(value = "Actualiza a una family Members")
+  @PutMapping(value = "/api/v1/familyMembers", consumes = "application/json", 
       produces = "application/json")
   public ResponseEntity<FamilyMembers> updatefamilyMembers(@RequestBody FamilyMembers famiMen) {
     return new ResponseEntity<FamilyMembers>(service.update(famiMen), HttpStatus.OK);
@@ -74,8 +77,8 @@ public class FamilyMembersController {
    * @param famiMen .
    * @return "0" cuando es la confirmación de eleminación.
    */
-  @ApiOperation(value = "Actualiza datos de Family Members")
-  @DeleteMapping(value = "/familyMembers", consumes = "application/json", 
+  @ApiOperation(value = "Elimina datos de Family Members")
+  @DeleteMapping(value = "/api/v1/familyMembers", consumes = "application/json", 
       produces = "application/json")
   public ResponseEntity<Integer> deletefamilyMembers(@RequestBody FamilyMembers famiMen) {
     int rpta = 0;
@@ -89,21 +92,14 @@ public class FamilyMembersController {
    * El metodo findByFamilyMembers() se le envia un parametro FamilyId y retorna a
    * los miembros de familia.
    * 
-   * @return idFami es el parametro necesario para bucarlos a los de cuyo idFami
-   *         miembros de familia.
-   */
-
-  /**
-   * El metodo findByFamilyMembers() se le envia un parametro FamilyId y retorna a
-   * los miembros de familia.
-   * 
    * @param idFami es el parametro definido para miembros de familia.
    * @return idFami es el parametro necesario para bucarlos a los de cuyo idFami
    *         miembros de familia.
    */
-  @GetMapping(value = "/familyMembers/{id}/members")
+  @ApiOperation(value = "Retorna inforacion de Family Members por su Id")
+  @GetMapping(value = "/api/v1/familyMembers/{id}/members")
   public ResponseEntity<List<FamilyMembers>> findByFamilyMembers(@PathVariable("id") int idFami) {
-    return new ResponseEntity<List<FamilyMembers>>(serviceFam.findByFamilies(idFami), 
+    return new ResponseEntity<List<FamilyMembers>>(serviceFam.findByFamilies(idFami),
         HttpStatus.OK);
 
   }

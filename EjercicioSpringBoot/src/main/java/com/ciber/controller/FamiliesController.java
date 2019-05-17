@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "API REST families", description = "Mostar información")
+@Api(value = "/api/v1/swagger", tags =  "Mostar información")
 @RestController
 public class FamiliesController {
   Logger log = LoggerFactory.getLogger(this.getClass());
@@ -34,7 +35,7 @@ public class FamiliesController {
    * @return list of families.
    */
   @ApiOperation(value = "Retorna lista de families")
-  @GetMapping(value = "/families")
+  @GetMapping(value = "/api/v1/families")
   public ResponseEntity<List<Families>> listFamilies() {
     return new ResponseEntity<List<Families>>(service.findAll(), HttpStatus.OK);
   }
@@ -47,7 +48,7 @@ public class FamiliesController {
    * @return object families.
    */
   @ApiOperation(value = "Crea a una families")
-  @PostMapping(value = "/families", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "/api/v1/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Families> createfamilies(@RequestBody Families fami) {
 
     return new ResponseEntity<Families>(service.create(fami), HttpStatus.CREATED);
@@ -61,7 +62,7 @@ public class FamiliesController {
    * @return object families.
    */
   @ApiOperation(value = "Actualiza a una families")
-  @PutMapping(value = "/families", consumes = "application/json", produces = "application/json")
+  @PutMapping(value = "/api/v1/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Families> updatefamilies(@RequestBody Families fami) {
     return new ResponseEntity<Families>(service.update(fami), HttpStatus.OK);
   }
@@ -73,8 +74,8 @@ public class FamiliesController {
    * @param fami Update.
    * @return object families delete.
    */
-  @ApiOperation(value = "Actualiza datos de una families")
-  @DeleteMapping(value = "/families", consumes = "application/json", produces = "application/json")
+  @ApiOperation(value = "Elimina datos de una families")
+  @DeleteMapping(value = "/api/v1/families", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Integer> deletefamilies(@RequestBody Families fami) {
     int rpta = 0;
     try {

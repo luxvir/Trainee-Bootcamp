@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "API REST parientes", description = "Mostar información")
+@Api(value = "/api/v1/swagger", tags =  "Mostar información")
 @RestController
 public class ParentsController {
 
@@ -31,7 +31,7 @@ public class ParentsController {
    */
 
   @ApiOperation(value = "Retorna lista de Parents")
-  @GetMapping(value = "/parents")
+  @GetMapping(value = "/api/v1/parents")
   public ResponseEntity<List<Parents>> listParents() {
     return new ResponseEntity<List<Parents>>(service.findAll(), HttpStatus.OK);
   }
@@ -44,7 +44,7 @@ public class ParentsController {
    */
 
   @ApiOperation(value = "Crea a una Parents")
-  @PostMapping(value = "/parents", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> createParents(@RequestBody Parents parem) {
     return new ResponseEntity<Parents>(service.create(parem), HttpStatus.CREATED);
   }
@@ -56,7 +56,7 @@ public class ParentsController {
    * @return object parents.
    */
   @ApiOperation(value = "Actualiza a una Parents")
-  @PutMapping(value = "/parents", consumes = "application/json", produces = "application/json")
+  @PutMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Parents> updateParents(@RequestBody Parents parem) {
     return new ResponseEntity<Parents>(service.update(parem), HttpStatus.OK);
   }
@@ -68,7 +68,7 @@ public class ParentsController {
    * @return object parents.
    */
   @ApiOperation(value = "Elimina datos de una Parents")
-  @DeleteMapping(value = "/parents", consumes = "application/json", produces = "application/json")
+  @DeleteMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Integer> deleteParents(@RequestBody Parents parem) {
     int rpta = 0;
 

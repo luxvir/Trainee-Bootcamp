@@ -3,6 +3,7 @@ package com.ciber.controller;
 import com.ciber.model.Students;
 import com.ciber.service.IStudentsService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(value = "/api/v1/swagger", tags =  "Mostar información")
 @RestController
 public class StudentsController {
 
@@ -29,7 +31,7 @@ public class StudentsController {
    */
   
   @ApiOperation(value = "Retorna lista de estudiante")
-  @GetMapping(value = "/students")
+  @GetMapping(value = "/api/v1/students")
   public ResponseEntity<List<Students>> listStudents() {
     return new ResponseEntity<List<Students>>(service.findAll(), HttpStatus.OK);
   }
@@ -40,8 +42,8 @@ public class StudentsController {
    * @return objeto studiante creado.
    */
   
-  @ApiOperation(value = "Crea a una estudiante")
-  @PostMapping(value = "/students", consumes = "application/json", produces = "application/json")
+  @ApiOperation(value = "Registra a una estudiante")
+  @PostMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Students> createStudents(@RequestBody Students stu) {
     return new ResponseEntity<Students>(service.create(stu), HttpStatus.CREATED);
   }
@@ -52,8 +54,8 @@ public class StudentsController {
    * @return estudiante modificado.
    */
   
-  @ApiOperation(value = "Actualiza  a un estudiante")
-  @PutMapping(value = "/students", consumes = "application/json", produces = "application/json")
+  @ApiOperation(value = "Actualiza datos a un estudiante")
+  @PutMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Students> updateStudents(@RequestBody Students stu) {
     return new ResponseEntity<Students>(service.update(stu), HttpStatus.OK);
   }
@@ -65,8 +67,8 @@ public class StudentsController {
    * @return objeto estudiant eliminado.
    */
   
-  @ApiOperation(value = "Elimina  a estudiante")
-  @DeleteMapping(value = "/students", consumes = "application/json", produces = "application/json")
+  @ApiOperation(value = "Elimina los datos de un estudiante")
+  @DeleteMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Integer> deleteStudents(@RequestBody Students stu) {
     int rpta = 0;
 
