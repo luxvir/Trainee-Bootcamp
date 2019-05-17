@@ -29,8 +29,8 @@ public class FamilyMembersController {
   IFamiliesService serviceFam;
 
   /**
-   * El metodo GetMapping  listfamilyMembers() se encarga de retornar 
-   * la lista de miembros de familia.
+   * El metodo GetMapping listfamilyMembers() se encarga de retornar la lista de
+   * miembros de familia.
    * 
    * @return list of family members.
    */
@@ -41,43 +41,42 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo PostMapping  createfamilies() es responsable de crear 
-   * a un objeto de miembro de familia.
+   * El metodo PostMapping createfamilies() es responsable de crear a un objeto de
+   * miembro de familia.
    * 
    * @param famiMen object families.
    * @return famiMen.
    */
   @ApiOperation(value = "Crea a una family Members")
   @PostMapping(value = "/familyMembers", consumes = "application/json", 
-          produces = "application/json")
+        produces = "application/json")
   public ResponseEntity<FamilyMembers> createfamilyMembers(@RequestBody FamilyMembers famiMen) {
     return new ResponseEntity<FamilyMembers>(service.create(famiMen), HttpStatus.CREATED);
   }
 
   /**
-   * El metodo PutMapping  updatefamilies() se encarga de actualizar 
-   * a un objeto de miembro de familia.
-   * members.
+   * El metodo PutMapping updatefamilies() se encarga de actualizar a un objeto de
+   * miembro de familia. members.
    * 
    * @param famiMen object families.
    * @return famiMen.
    */
   @PutMapping(value = "/familyMembers", consumes = "application/json", 
-            produces = "application/json")
+      produces = "application/json")
   public ResponseEntity<FamilyMembers> updatefamilyMembers(@RequestBody FamilyMembers famiMen) {
     return new ResponseEntity<FamilyMembers>(service.update(famiMen), HttpStatus.OK);
   }
 
   /**
-   * El metodo DeleteMapping  deletefamilyMembers() se encarga de eliminar 
-   * a un objeto de miembro de familia.
+   * El metodo DeleteMapping deletefamilyMembers() se encarga de eliminar a un
+   * objeto de miembro de familia.
    * 
    * @param famiMen .
-   * @return
+   * @return "0" cuando es la confirmación de eleminación.
    */
   @ApiOperation(value = "Actualiza datos de Family Members")
   @DeleteMapping(value = "/familyMembers", consumes = "application/json", 
-            produces = "application/json")
+      produces = "application/json")
   public ResponseEntity<Integer> deletefamilyMembers(@RequestBody FamilyMembers famiMen) {
     int rpta = 0;
 
@@ -87,14 +86,25 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo findByFamilyMembers() se le envia un parametro FamilyId 
-   * y retorna a los miembros de familia.
+   * El metodo findByFamilyMembers() se le envia un parametro FamilyId y retorna a
+   * los miembros de familia.
    * 
-   * @return list of family members.
+   * @return idFami es el parametro necesario para bucarlos a los de cuyo idFami
+   *         miembros de familia.
+   */
+
+  /**
+   * El metodo findByFamilyMembers() se le envia un parametro FamilyId y retorna a
+   * los miembros de familia.
+   * 
+   * @param idFami es el parametro definido para miembros de familia.
+   * @return idFami es el parametro necesario para bucarlos a los de cuyo idFami
+   *         miembros de familia.
    */
   @GetMapping(value = "/familyMembers/{id}/members")
-  public ResponseEntity<List<FamilyMembers>> findByFamilyMembers(@PathVariable("id") int id) {
-    return new ResponseEntity<List<FamilyMembers>>(serviceFam.findByFamilies(id), HttpStatus.OK);
+  public ResponseEntity<List<FamilyMembers>> findByFamilyMembers(@PathVariable("id") int idFami) {
+    return new ResponseEntity<List<FamilyMembers>>(serviceFam.findByFamilies(idFami), 
+        HttpStatus.OK);
 
   }
 
