@@ -34,6 +34,9 @@ public class Students {
   @Column(name = "student_id")
   private int studentId;
 
+  @Column(name = "gender", length = 1, nullable = false)
+  private String gender;
+  
   @Column(name = "first_name", length = 20, nullable = false)
   private String firstName;
 

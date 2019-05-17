@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "/api/v1/swagger", tags =  "Mostar información")
+@Api(value = "Spring Boot Swagger rest", description  =  "Mostar información")
 @RestController
 public class FamilyMembersController {
 
@@ -31,7 +31,7 @@ public class FamilyMembersController {
   IFamiliesService serviceFam;
 
   /**
-   * El metodo GetMapping listfamilyMembers() se encarga de retornar la lista de
+   * La función  listfamilyMembers() se encarga de retornar la lista de
    * miembros de familia.
    * 
    * @return list of family members.
@@ -43,7 +43,7 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo PostMapping createfamilies() es responsable de crear a un objeto de
+   * La función  createfamilies() es responsable de crear a un objeto de
    * miembro de familia.
    * 
    * @param famiMen object families.
@@ -57,7 +57,7 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo PutMapping updatefamilies() se encarga de actualizar a un objeto de
+   * La función  updatefamilies() se encarga de actualizar a un objeto de
    * miembro de familia. members.
    * 
    * @param famiMen object families.
@@ -71,7 +71,7 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo DeleteMapping deletefamilyMembers() se encarga de eliminar a un
+   * La función  deletefamilyMembers() se encarga de eliminar a un
    * objeto de miembro de familia.
    * 
    * @param famiMen .
@@ -89,7 +89,7 @@ public class FamilyMembersController {
   }
 
   /**
-   * El metodo findByFamilyMembers() se le envia un parametro FamilyId y retorna a
+   * ByFamilyMembers() se le envia un parametro FamilyId y retorna a
    * los miembros de familia.
    * 
    * @param idFami es el parametro definido para miembros de familia.

@@ -29,7 +29,7 @@ public class ParentsControllerTest {
     p.setGender("M");
     p.setLastName("Cordova");
     p.setMiddleName("Leandro");
-    p.setOtherParentPetails("calle el san martin 998 ");
+    p.setOtherParentDetails("calle el san martin 998 ");
 
     dao.save(p);
 
@@ -43,7 +43,7 @@ public class ParentsControllerTest {
     p.setGender("F");
     p.setLastName("Soler");
     p.setMiddleName("Lucia");
-    p.setOtherParentPetails("calle el san francisco N 567 ");
+    p.setOtherParentDetails("calle el san francisco N 567 ");
 
     dao.save(p);
   }

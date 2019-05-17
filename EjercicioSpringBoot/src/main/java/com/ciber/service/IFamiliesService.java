@@ -5,6 +5,7 @@ import com.ciber.model.FamilyMembers;
 
 import java.util.List;
 
+
 public interface IFamiliesService {
   List<Families> findAll();
 
@@ -15,4 +16,6 @@ public interface IFamiliesService {
   int delete(Integer id);
 
   List<FamilyMembers> findByFamilies(int famiId);
+  
+  Families findByID(int id);
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "/api/v1/swagger", tags =  "Mostar información")
+@Api(value = "Spring Boot Swagger rest", description  =  "Mostar información")
 @RestController
 public class ParentsController {
 
@@ -25,7 +25,7 @@ public class ParentsController {
   IParentsService service;
 
   /**
-   * EL metodo listParents() se encarga de retonar la lista de parientes.
+   * La función  listParents() se encarga de retonar la lista de parientes.
    * 
    * @return list of parents.
    */
@@ -37,38 +37,41 @@ public class ParentsController {
   }
 
   /**
-   * El metodo createParents() es responsable de crear a un pariente..
+   * La función  createParents() es responsable de crear a un pariente..
    * 
    * @param parem object parents.
    * @return object parents.
    */
 
   @ApiOperation(value = "Crea a una Parents")
-  @PostMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "/api/v1/parents", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Parents> createParents(@RequestBody Parents parem) {
     return new ResponseEntity<Parents>(service.create(parem), HttpStatus.CREATED);
   }
 
   /**
-   * El metodo updateParents() se encarga de actualizar a un pariente.
+   * La función  updateParents() se encarga de actualizar a un pariente.
    * 
    * @param parem object parents.
    * @return object parents.
    */
   @ApiOperation(value = "Actualiza a una Parents")
-  @PutMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
+  @PutMapping(value = "/api/v1/parents", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Parents> updateParents(@RequestBody Parents parem) {
     return new ResponseEntity<Parents>(service.update(parem), HttpStatus.OK);
   }
 
   /**
-   * DeleteMapping method deleteParents() that removes an object familparents.
+   * La función  deleteParents() se encarga de eliminar a un pariente.
    * 
    * @param parem object parents.
    * @return object parents.
    */
   @ApiOperation(value = "Elimina datos de una Parents")
-  @DeleteMapping(value = "/api/v1/parents", consumes = "application/json", produces = "application/json")
+  @DeleteMapping(value = "/api/v1/parents", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Integer> deleteParents(@RequestBody Parents parem) {
     int rpta = 0;
 

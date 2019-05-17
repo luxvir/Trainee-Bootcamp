@@ -8,6 +8,7 @@ import com.ciber.model.FamilyMembers;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,12 @@ public class FamiliesServiceImpl implements IFamiliesService {
   @Override
   public List<FamilyMembers> findByFamilies(int famiId) {
     return (List<FamilyMembers>) daoMem.findByFamiliesFamilyId(famiId);
+  }
+ 
+  @Override
+  public Families findByID(int id) {
+    
+    return dao.findById(id).get();
   }
 
 }

@@ -26,7 +26,7 @@ public class FamilyMembers {
   @Column(name = "family_member_id")
   private int familyMemberId;
 
-  @Column(name = "parent_or_student_member", length = 100, nullable = false)
+  @Column(name = "parent_or_student_member", length = 3, nullable = false)
   private String parentOrStudentMember;
 
   @ManyToOne

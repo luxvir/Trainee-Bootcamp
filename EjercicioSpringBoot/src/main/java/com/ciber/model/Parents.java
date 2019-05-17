@@ -34,7 +34,7 @@ public class Parents {
   @Column(name = "parent_id")
   private int parentId;
 
-  @Column(name = "gender", length = 9, nullable = false)
+  @Column(name = "gender", length = 1, nullable = false)
   private String gender;
 
   @Column(name = "fisrst_name", length = 20, nullable = false)
@@ -47,7 +47,7 @@ public class Parents {
   private String lastName;
 
   @Column(name = "other_parent_details", length = 100, nullable = false)
-  private String otherParentPetails;
+  private String otherParentDetails;
 
   @JsonIgnore
   @JoinTable(name = "studentParents", joinColumns = @JoinColumn(name = "parent_id",

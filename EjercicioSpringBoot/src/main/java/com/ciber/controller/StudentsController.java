@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "/api/v1/swagger", tags =  "Mostar información")
+@Api(value = "Spring Boot Swagger rest", description  =  "Mostar información")
 @RestController
 public class StudentsController {
 
   @Autowired
   IStudentsService service;
   /**
-   * El metodo listStudents() encargado de retorna la lista de studiantes.
+   * La función  listStudents() encargado de retorna la lista de studiantes.
    * 
    * @return lista de studentes.
    */
@@ -36,39 +36,42 @@ public class StudentsController {
     return new ResponseEntity<List<Students>>(service.findAll(), HttpStatus.OK);
   }
   /**
-   * El metodo createStudents() encargado de crear a un objeto estudiante.
+   * La función  createStudents() encargado de crear a un objeto estudiante.
    * 
    * @param stu object students.
    * @return objeto studiante creado.
    */
   
   @ApiOperation(value = "Registra a una estudiante")
-  @PostMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
+  @PostMapping(value = "/api/v1/students", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Students> createStudents(@RequestBody Students stu) {
     return new ResponseEntity<Students>(service.create(stu), HttpStatus.CREATED);
   }
   /**
-   * El metodo updateStudents() encargado de realizar la actualizacion a un objeto estudiante.
+   * La función  updateStudents() encargado de realizar la actualizacion a un objeto estudiante.
    * 
    * @param stu object students.
    * @return estudiante modificado.
    */
   
   @ApiOperation(value = "Actualiza datos a un estudiante")
-  @PutMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
+  @PutMapping(value = "/api/v1/students", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Students> updateStudents(@RequestBody Students stu) {
     return new ResponseEntity<Students>(service.update(stu), HttpStatus.OK);
   }
 
   /**
-   * El metodo deleteStudents() responsable de eliminar  a un objeto estudiante.
+   * La función  deleteStudents() responsable de eliminar  a un objeto estudiante.
    * 
    * @param stu object studiants.
    * @return objeto estudiant eliminado.
    */
   
   @ApiOperation(value = "Elimina los datos de un estudiante")
-  @DeleteMapping(value = "/api/v1/students", consumes = "application/json", produces = "application/json")
+  @DeleteMapping(value = "/api/v1/students", consumes = "application/json", 
+      produces = "application/json")
   public ResponseEntity<Integer> deleteStudents(@RequestBody Students stu) {
     int rpta = 0;
 
