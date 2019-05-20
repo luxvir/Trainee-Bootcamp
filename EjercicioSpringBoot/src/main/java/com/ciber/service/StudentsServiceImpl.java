@@ -5,6 +5,7 @@ import com.ciber.model.Students;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,5 +87,10 @@ public class StudentsServiceImpl implements IStudentsService {
       log.info("Error: " + e);
     }
     return rpta;
+  }
+
+  @Override
+  public Optional<Students> findById(int id) {
+    return (Optional<Students>) dao.findById(id);
   }
 }

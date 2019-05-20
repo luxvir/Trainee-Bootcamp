@@ -4,6 +4,7 @@ import com.ciber.model.Families;
 import com.ciber.model.FamilyMembers;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface IFamiliesService {
@@ -17,5 +18,5 @@ public interface IFamiliesService {
 
   List<FamilyMembers> findByFamilies(int famiId);
   
-  Families findByID(int id);
+  Optional<Families> findByID(int id);
 }

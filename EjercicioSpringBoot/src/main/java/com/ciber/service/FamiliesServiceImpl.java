@@ -8,6 +8,7 @@ import com.ciber.model.FamilyMembers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,6 +81,7 @@ public class FamiliesServiceImpl implements IFamiliesService {
     } catch (Exception e) {
       rpta = 0;
       log.info("error" + e);
+      log.info("no Eleminado familia");
     }
     return rpta;
   }
@@ -90,9 +92,9 @@ public class FamiliesServiceImpl implements IFamiliesService {
   }
  
   @Override
-  public Families findByID(int id) {
-    
-    return dao.findById(id).get();
+  public Optional<Families> findByID(int id) {
+    log.info(" id "+id);
+    return (Optional<Families>)dao.findById(id);
   }
 
 }

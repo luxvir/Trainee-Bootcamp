@@ -2,6 +2,7 @@ package com.ciber.service;
 
 import com.ciber.model.Students;
 import java.util.List;
+import java.util.Optional;
 
 public interface IStudentsService {
   
@@ -12,4 +13,6 @@ public interface IStudentsService {
   Students update(Students stu);
 
   int delete(Integer id);
+  
+  Optional<Students> findById(int id);
 }

@@ -5,6 +5,8 @@ import com.ciber.model.Parents;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +64,11 @@ public class ParentsServiceImpl implements IParentsService {
       rpta = 0;
     }
     return rpta;
+  }
+
+  @Override
+  public Optional<Parents> findId(int id) {
+    return (Optional<Parents>)dao.findById(id);
   }
 
 }

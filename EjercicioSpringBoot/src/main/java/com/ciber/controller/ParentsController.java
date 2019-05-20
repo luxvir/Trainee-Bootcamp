@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -74,10 +75,15 @@ public class ParentsController {
       produces = "application/json")
   public ResponseEntity<Integer> deleteParents(@RequestBody Parents parem) {
     int rpta = 0;
-
     rpta = service.delete(parem.getParentId());
-
     return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+
+    
   }
 
+  @ApiOperation(value = "Retorna inforacion de Parents  por su Id")
+  @GetMapping(value = "/api/v1/parents/{id}")
+  public ResponseEntity<Parents> listById(@PathVariable("id") int id) {
+    return new ResponseEntity<Parents>(service.findId(id).get(), HttpStatus.OK);
+  }
 }

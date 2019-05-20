@@ -1,12 +1,16 @@
 package com.ciber.controller;
 
+import com.ciber.exception.ModeloNotFoundException;
 import com.ciber.model.Families;
 import com.ciber.service.IFamiliesService;
 
 import io.swagger.annotations.Api;
 
 import io.swagger.annotations.ApiOperation;
+
+
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "Spring Boot Swagger rest", description = "Mostar información")
 @RestController
 public class FamiliesController {
+  
   Logger log = LoggerFactory.getLogger(this.getClass());
+  
   @Autowired
   private IFamiliesService service;
 
@@ -51,7 +57,7 @@ public class FamiliesController {
   @PostMapping(value = "/api/v1/families", consumes = "application/json", 
         produces = "application/json")
   public ResponseEntity<Families> createfamilies(@RequestBody Families fami) {
-
+    
     return new ResponseEntity<Families>(service.create(fami), HttpStatus.CREATED);
   }
 
@@ -65,7 +71,15 @@ public class FamiliesController {
   @PutMapping(value = "/api/v1/families", consumes = "application/json", 
         produces = "application/json")
   public ResponseEntity<Families> updatefamilies(@RequestBody Families fami) {
-    return new ResponseEntity<Families>(service.update(fami), HttpStatus.OK);
+    String mensaje="";
+    Optional<Families> fa = service.findByID(fami.getFamilyId());
+    
+    if(fa.isPresent()) {
+      return new ResponseEntity<Families>(service.update(fami), HttpStatus.OK);
+    }else {
+      mensaje = "error "+fami.getFamilyId();
+      throw  new ModeloNotFoundException(mensaje);
+    }    
   }
 
   /**
@@ -80,14 +94,18 @@ public class FamiliesController {
         produces = "application/json")
   public ResponseEntity<Integer> deletefamilies(@RequestBody Families fami) {
     int rpta = 0;
-    try {
-      rpta = service.delete(fami.getFamilyId());
-    } catch (Exception e) {
-      log.info("error" + e);
-      return new ResponseEntity<Integer>(rpta, HttpStatus.BAD_REQUEST);
-    }
-    log.info("Termino proceso");
-    return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+    String mensaje= "";
+    
+    Optional<Families>   fa = service.findByID(fami.getFamilyId());
+    
+    if( fa.isPresent()) {
+      log.info("id "+ fami.getFamilyId() );
+     rpta = service.delete(fami.getFamilyId());
+     return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+   }else {
+      mensaje="error ID "+fami.getFamilyId();
+      throw  new ModeloNotFoundException(mensaje);
+    }  
   }
   
   /**
@@ -99,7 +117,16 @@ public class FamiliesController {
    */
   @ApiOperation(value = "Retorna inforacion de Families  por su Id")
   @GetMapping(value = "/api/v1/families/{id}")
-  public ResponseEntity<Families> listById(@PathVariable("id") Integer id) {
-    return new ResponseEntity<Families>(service.findByID(id), HttpStatus.OK);
+  public ResponseEntity<Object> listById(@PathVariable("id") Integer id) {
+   
+    String mensaje= "";
+    Optional<Families> fam = service.findByID(id);
+    
+    if ( fam.isPresent() ) {
+      return new ResponseEntity<Object>(fam,HttpStatus.OK);
+    }else { 
+      mensaje="error  "+id;
+      throw  new ModeloNotFoundException(mensaje);
+    }
   }
 }

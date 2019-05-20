@@ -82,10 +82,9 @@ public class FamilyMembersController {
       produces = "application/json")
   public ResponseEntity<Integer> deletefamilyMembers(@RequestBody FamilyMembers famiMen) {
     int rpta = 0;
-
     rpta = service.delete(famiMen.getFamilyMemberId());
-
     return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+    
   }
 
   /**
